@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xulq-atvor nazorati — Eko Komisiya</title>
+    <meta
+      name="description"
+      content="Ustozlar va o'quvchilarning ekologik intizomi hamda xulq-atvorini belgilash va kuzatish sahifasi."
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/glass.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+  </head>
+  <body>
+    <div class="bg-blobs" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <header class="topbar glass-header">
+      <div class="topbar-inner">
+        <a href="/schools.html" class="brand-link">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+            </svg>
+          </span>
+          <span>Eko Komisiya</span>
+        </a>
+
+        <nav id="main-nav" class="nav-links" aria-label="Asosiy navigatsiya">
+          <a href="/schools.html" class="nav-link">Maktablar</a>
+          <a href="/behavior.html" class="nav-link active">Xulq-atvor</a>
+          <a href="/school.html" id="my-school-nav-link" class="nav-link" hidden>Mening maktabim</a>
+          <a href="/admin.html" id="admin-nav-link" class="nav-link" hidden>Admin panel</a>
+          <a href="/profile.html" class="nav-link">Profil</a>
+        </nav>
+
+        <div class="topbar-actions">
+          <a href="/profile.html" id="header-profile-link" class="user-profile-link" aria-label="Profil sahifasiga o'tish">
+            <span id="header-user-avatar" class="header-avatar"></span>
+            <span id="header-user-name" class="user-identity"></span>
+          </a>
+          <button type="button" id="logout-btn" class="btn btn-ghost btn-sm">Chiqish</button>
+          <button
+            type="button"
+            id="mobile-menu-btn"
+            class="mobile-menu-btn"
+            aria-label="Menyuni ochish"
+            aria-expanded="false"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="4" y1="7" x2="20" y2="7" />
+              <line x1="4" y1="12" x2="20" y2="12" />
+              <line x1="4" y1="17" x2="20" y2="17" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="page-header">
+        <div>
+          <h1 class="page-title">Ustozlar va o'quvchilar xulq-atvori</h1>
+          <p class="page-subtitle">
+            Maktablarda ustozlar va o'quvchilarning ekologik madaniyati, intizomi va faolligini baholang hamda yozuvlarni yuriting.
+          </p>
+        </div>
+      </section>
+
+      <section class="kpi-strip" aria-label="Xulq-atvor statistikasi">
+        <article class="kpi-card glass-panel">
+          <div class="kpi-label">Jami yozuvlar</div>
+          <div id="kpi-behavior-total" class="kpi-value tabular-nums">—</div>
+        </article>
+        <article class="kpi-card glass-panel">
+          <div class="kpi-label">Ustozlar baholari</div>
+          <div id="kpi-behavior-teachers" class="kpi-value tabular-nums">—</div>
+        </article>
+        <article class="kpi-card glass-panel">
+          <div class="kpi-label">O'quvchilar baholari</div>
+          <div id="kpi-behavior-students" class="kpi-value tabular-nums">—</div>
+        </article>
+        <article class="kpi-card glass-panel">
+          <div class="kpi-label">O'rtacha intizom balli</div>
+          <div id="kpi-behavior-avg" class="kpi-value tabular-nums">—</div>
+        </article>
+      </section>
+
+      <section class="toolbar" aria-label="Xulq-atvor yozuvlarini saralash">
+        <div class="toolbar-search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <input
+            id="behavior-search"
+            type="search"
+            class="field-input"
+            placeholder="Ism, sinf/fan, maktab yoki izoh bo'yicha qidirish..."
+            aria-label="Xulq-atvor yozuvlarini qidirish"
+          />
+        </div>
+
+        <div class="toolbar-filters">
+          <div class="segmented-bar" role="group" aria-label="Shaxs toifasi bo'yicha filtrlash">
+            <button type="button" class="segmented-btn active" data-type-filter="all">Barchasi</button>
+            <button type="button" class="segmented-btn" data-type-filter="teacher">Ustozlar</button>
+            <button type="button" class="segmented-btn" data-type-filter="student">O'quvchilar</button>
+          </div>
+
+          <select id="behavior-school-filter" class="field-select" aria-label="Maktab bo'yicha saralash">
+            <option value="all">Barcha maktablar</option>
+          </select>
+
+          <select id="behavior-status-filter" class="field-select" aria-label="Xulq-atvor darajasi bo'yicha saralash">
+            <option value="all">Barcha holatlar</option>
+            <option value="excellent">A'lo</option>
+            <option value="good">Yaxshi</option>
+            <option value="satisfactory">Qoniqarli</option>
+            <option value="needs_attention">E'tibor talab</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="admin-grid" aria-label="Xulq-atvor belgilash va ro'yxat">
+        <article class="admin-panel-card glass-panel-strong glass-accent-top">
+          <h2 id="behavior-form-title" class="panel-heading">Xulq-atvor belgilash</h2>
+          <p id="behavior-form-subtitle" class="panel-subheading">
+            Ustoz yoki o'quvchi uchun ekologik xulq-atvor bahosini kiriting.
+          </p>
+
+          <form id="behavior-form" class="admin-form" novalidate>
+            <div id="behavior-form-alert" class="form-alert error" role="alert" hidden></div>
+
+            <div class="field-group">
+              <label class="field-label" for="beh-school">Maktab</label>
+              <select id="beh-school" name="schoolId" class="field-select" required>
+                <option value="">Maktab tanlang</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="beh-type">Toifa</label>
+              <select id="beh-type" name="personType" class="field-select" required>
+                <option value="teacher">Ustoz</option>
+                <option value="student">O'quvchi</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="beh-name">To'liq ism (F.I.Sh.)</label>
+              <input
+                id="beh-name"
+                name="personName"
+                type="text"
+                class="field-input"
+                placeholder="Masalan: Dilfuza Rahimova"
+                required
+              />
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="beh-class-subject">Sinf yoki fan (ixtiyoriy)</label>
+              <input
+                id="beh-class-subject"
+                name="classOrSubject"
+                type="text"
+                class="field-input"
+                placeholder="Masalan: Biologiya fani yoki 9-A sinf"
+              />
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="beh-status">Xulq-atvor darajasi</label>
+              <select id="beh-status" name="behaviorStatus" class="field-select" required>
+                <option value="excellent">A'lo (Namuna)</option>
+                <option value="good">Yaxshi (Barqaror)</option>
+                <option value="satisfactory">Qoniqarli</option>
+                <option value="needs_attention">E'tibor talab</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="beh-score">Intizom balli (1–5)</label>
+              <select id="beh-score" name="ecoScore" class="field-select" required>
+                <option value="5">5 ball — A'lo</option>
+                <option value="4">4 ball — Yaxshi</option>
+                <option value="3">3 ball — Qoniqarli</option>
+                <option value="2">2 ball — Sust</option>
+                <option value="1">1 ball — E'tibor talab</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="beh-date">Sana</label>
+              <input id="beh-date" name="recordedAt" type="date" class="field-input" required />
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="beh-note">Kuzatuv va izoh (ixtiyoriy)</label>
+              <textarea
+                id="beh-note"
+                name="note"
+                class="field-textarea"
+                placeholder="Ekologik tadbirlardagi faollik, tozalik va intizom bo'yicha izoh..."
+              ></textarea>
+            </div>
+
+            <div class="action-row" style="justify-content: flex-start;">
+              <button type="submit" id="behavior-submit-btn" class="btn btn-primary" style="flex: 1;">
+                Xulq-atvorni saqlash
+              </button>
+              <button type="button" id="behavior-cancel-edit-btn" class="btn btn-ghost btn-sm" hidden>
+                Bekor qilish
+              </button>
+            </div>
+          </form>
+        </article>
+
+        <article class="admin-panel-card glass-panel">
+          <div class="table-toolbar">
+            <div>
+              <h2 class="panel-heading">Xulq-atvor yozuvlari</h2>
+              <p id="behavior-list-count" class="panel-subheading" style="margin-bottom: 0;">
+                Barcha ustozlar va o'quvchilar ro'yxati
+              </p>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Shaxs / Sinf-Fan</th>
+                  <th>Toifa</th>
+                  <th>Maktab</th>
+                  <th>Holat / Ball</th>
+                  <th>Sana</th>
+                  <th class="num-col">Amal</th>
+                </tr>
+              </thead>
+              <tbody id="behavior-table-body">
+                <tr>
+                  <td colspan="6">Yuklanmoqda...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <!-- Accessible Confirmation Modal -->
+    <div
+      id="confirm-modal"
+      class="modal-backdrop"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="confirm-modal-title"
+      hidden
+    >
+      <div class="modal-panel glass-panel-strong">
+        <h3 id="confirm-modal-title" class="modal-title">Tasdiqlash</h3>
+        <p id="confirm-modal-desc" class="modal-desc"></p>
+        <div class="modal-actions">
+          <button type="button" id="confirm-cancel-btn" class="btn btn-ghost btn-sm">Bekor qilish</button>
+          <button type="button" id="confirm-accept-btn" class="btn btn-danger btn-sm">O'chirish</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <span>Eko Komisiya — Xulq-atvor nazorati</span>
+      <span>Ustozlar va o'quvchilar monitoringi</span>
+    </footer>
+
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/behavior.js"></script>
+  </body>
+</html>

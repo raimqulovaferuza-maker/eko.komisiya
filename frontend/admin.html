@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin panel — Eko Komisiya</title>
+    <meta
+      name="description"
+      content="Eko Komisiya administrator boshqaruv paneli: arizalar, akkauntlar, maktablar va baholarni boshqarish."
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/glass.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+  </head>
+  <body>
+    <div class="bg-blobs" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <header class="topbar glass-header">
+      <div class="topbar-inner">
+        <a href="/schools.html" class="brand-link">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+            </svg>
+          </span>
+          <span>Eko Komisiya</span>
+        </a>
+
+        <nav id="main-nav" class="nav-links" aria-label="Asosiy navigatsiya">
+          <a href="/schools.html" class="nav-link">Maktablar</a>
+          <a href="/behavior.html" class="nav-link">Xulq-atvor</a>
+          <a href="/admin.html" id="admin-nav-link" class="nav-link active">Admin panel</a>
+          <a href="/profile.html" class="nav-link">Profil</a>
+        </nav>
+
+        <div class="topbar-actions">
+          <a href="/profile.html" id="header-profile-link" class="user-profile-link" aria-label="Profil sahifasiga o'tish">
+            <span id="header-user-avatar" class="header-avatar"></span>
+            <span id="header-user-name" class="user-identity"></span>
+          </a>
+          <button type="button" id="logout-btn" class="btn btn-ghost btn-sm">Chiqish</button>
+          <button
+            type="button"
+            id="mobile-menu-btn"
+            class="mobile-menu-btn"
+            aria-label="Menyuni ochish"
+            aria-expanded="false"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="4" y1="7" x2="20" y2="7" />
+              <line x1="4" y1="12" x2="20" y2="12" />
+              <line x1="4" y1="17" x2="20" y2="17" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="page-header">
+        <div>
+          <h1 class="page-title">Administrator boshqaruv paneli</h1>
+          <p class="page-subtitle">
+            Ro'yxatdan o'tish arizalarini ko'rib chiqing, akkauntlar va maktablarni boshqaring hamda baholarni tahrirlang.
+          </p>
+        </div>
+      </section>
+
+      <section class="kpi-strip" aria-label="Tizim statistikasi">
+        <article class="kpi-card glass-panel">
+          <div class="kpi-label">Jami foydalanuvchilar</div>
+          <div id="admin-kpi-users" class="kpi-value tabular-nums">—</div>
+        </article>
+        <article class="kpi-card glass-panel">
+          <div class="kpi-label">Kutilayotgan arizalar</div>
+          <div id="admin-kpi-pending" class="kpi-value tabular-nums">—</div>
+        </article>
+        <article class="kpi-card glass-panel">
+          <div class="kpi-label">Jami maktablar</div>
+          <div id="admin-kpi-schools" class="kpi-value tabular-nums">—</div>
+        </article>
+        <article class="kpi-card glass-panel">
+          <div class="kpi-label">Qayd etilgan ovozlar</div>
+          <div id="admin-kpi-votes" class="kpi-value tabular-nums">—</div>
+        </article>
+      </section>
+
+      <!-- Registration Requests Queue -->
+      <section class="admin-full-panel" aria-label="Ro'yxatdan o'tish arizalari">
+        <article class="admin-panel-card glass-panel-strong glass-accent-top">
+          <div class="table-toolbar">
+            <div>
+              <h2 class="panel-heading">Ro'yxatdan o'tish arizalari</h2>
+              <p class="panel-subheading" style="margin-bottom: 0;">
+                Komissiya a'zosi yoki administrator bo'lish uchun yuborilgan arizalarni ko'rib chiqing. Faqat qabul qilingan loginlar tizimga kira oladi.
+              </p>
+            </div>
+            <select
+              id="requests-status-filter"
+              class="field-select"
+              style="width: auto; min-width: 190px;"
+              aria-label="Arizalar holati bo'yicha saralash"
+            >
+              <option value="pending">Kutilayotganlar</option>
+              <option value="all">Barcha arizalar</option>
+            </select>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>F.I.Sh.</th>
+                  <th>Login</th>
+                  <th>So'ralgan rol</th>
+                  <th>Izoh</th>
+                  <th>Holat</th>
+                  <th class="num-col">Amal</th>
+                </tr>
+              </thead>
+              <tbody id="requests-table-body">
+                <tr>
+                  <td colspan="6">Yuklanmoqda...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <!-- Users Management Section -->
+      <section class="admin-grid" aria-label="Foydalanuvchilarni boshqarish">
+        <article class="admin-panel-card glass-panel-strong glass-accent-top">
+          <h2 class="panel-heading">Yangi akkaunt qo'shish</h2>
+          <p class="panel-subheading">Yangi komissiya a'zosi, maktab direktori yoki administrator yarating.</p>
+
+          <form id="create-user-form" class="admin-form" novalidate>
+            <div id="user-form-alert" class="form-alert error" role="alert" hidden></div>
+
+            <div class="field-group">
+              <label class="field-label" for="new-user-fullname">To'liq ism (F.I.Sh.)</label>
+              <input
+                id="new-user-fullname"
+                name="fullName"
+                type="text"
+                class="field-input"
+                placeholder="Masalan: Dilnoza Saidova"
+                required
+              />
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="new-user-username">Login</label>
+              <input
+                id="new-user-username"
+                name="username"
+                type="text"
+                class="field-input"
+                placeholder="Masalan: komissiya_2"
+                required
+              />
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="new-user-password">Parol</label>
+              <input
+                id="new-user-password"
+                name="password"
+                type="password"
+                class="field-input"
+                placeholder="Kamida 4 ta belgi"
+                required
+              />
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="new-user-role">Rol</label>
+              <select id="new-user-role" name="role" class="field-select">
+                <option value="user">Komissiya a'zosi (user)</option>
+                <option value="director">Maktab direktori (director)</option>
+                <option value="admin">Administrator (admin)</option>
+              </select>
+            </div>
+
+            <div id="new-user-school-group" class="field-group" hidden>
+              <label class="field-label" for="new-user-school">Biriktiriladigan maktab</label>
+              <select id="new-user-school" name="schoolId" class="field-select">
+                <option value="">Maktab tanlang (ixtiyoriy)</option>
+              </select>
+            </div>
+
+            <button type="submit" id="create-user-btn" class="btn btn-primary">
+              Akkaunt yaratish
+            </button>
+          </form>
+        </article>
+
+        <article class="admin-panel-card glass-panel">
+          <div class="table-toolbar">
+            <div>
+              <h2 class="panel-heading">Foydalanuvchilar ro'yxati</h2>
+              <p class="panel-subheading" style="margin-bottom: 0;">Barcha ro'yxatdan o'tgan hisoblar</p>
+            </div>
+            <input
+              id="admin-user-search"
+              type="search"
+              class="field-input"
+              style="max-width: 240px;"
+              placeholder="Login yoki ism qidirish..."
+              aria-label="Foydalanuvchilarni qidirish"
+            />
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>F.I.Sh.</th>
+                  <th>Login</th>
+                  <th>Rol</th>
+                  <th class="num-col">Ovozlar</th>
+                  <th class="num-col">Amal</th>
+                </tr>
+              </thead>
+              <tbody id="users-table-body">
+                <tr>
+                  <td colspan="5">Yuklanmoqda...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <!-- Schools Management Section -->
+      <section class="admin-stack" aria-label="Maktablarni boshqarish">
+        <article class="admin-panel-card glass-panel-strong glass-accent-top">
+          <h2 class="panel-heading">Yangi maktab qo'shish</h2>
+          <p class="panel-subheading">Baholash ro'yxatiga yangi ta'lim muassasasi qo'shing.</p>
+
+          <form id="create-school-form" class="admin-form-grid" novalidate>
+            <div id="school-form-alert" class="form-alert error" role="alert" hidden></div>
+
+            <div class="field-group">
+              <label class="field-label" for="school-name">Maktab nomi</label>
+              <input
+                id="school-name"
+                name="name"
+                type="text"
+                class="field-input"
+                placeholder="Masalan: 55-sonli Eko-Maktab"
+                required
+              />
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="school-district">Tuman / Hudud</label>
+              <input
+                id="school-district"
+                name="district"
+                type="text"
+                class="field-input"
+                placeholder="Masalan: Olmazor tumani"
+                required
+              />
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="school-address">Manzil</label>
+              <input
+                id="school-address"
+                name="address"
+                type="text"
+                class="field-input"
+                placeholder="Masalan: Farobiy ko'chasi, 12-uy"
+              />
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="school-focus">Ekologik yo'nalish</label>
+              <input
+                id="school-focus"
+                name="ecoFocus"
+                type="text"
+                class="field-input"
+                placeholder="Masalan: Chiqindilarni saralash va quyosh energiyasi"
+              />
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="school-image-file">Maktab rasmi (ixtiyoriy, 4 MB gacha)</label>
+              <input
+                id="school-image-file"
+                name="imageFile"
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+                class="file-input-control"
+              />
+            </div>
+
+            <div class="field-group">
+              <button type="submit" id="create-school-btn" class="btn btn-primary" style="width: 100%;">
+                Maktab qo'shish
+              </button>
+            </div>
+          </form>
+        </article>
+
+        <article class="admin-panel-card glass-panel">
+          <div class="table-toolbar">
+            <div>
+              <h2 class="panel-heading">Maktablar boshqaruvi</h2>
+              <p class="panel-subheading" style="margin-bottom: 0;">Mavjud maktablarni ko'rish va o'chirish</p>
+            </div>
+            <input
+              id="admin-school-search"
+              type="search"
+              class="field-input"
+              style="max-width: 240px;"
+              placeholder="Maktab yoki tuman qidirish..."
+              aria-label="Maktablarni qidirish"
+            />
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Maktab</th>
+                  <th>Tuman</th>
+                  <th>Direktor</th>
+                  <th class="num-col">Reyting</th>
+                  <th class="num-col">Ovozlar</th>
+                  <th class="num-col">Amal</th>
+                </tr>
+              </thead>
+              <tbody id="schools-table-body">
+                <tr>
+                  <td colspan="6">Yuklanmoqda...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <!-- Ratings Management Section -->
+      <section class="admin-full-panel" aria-label="Baholarni tahrirlash">
+        <article class="admin-panel-card glass-panel">
+          <div class="table-toolbar">
+            <div>
+              <h2 class="panel-heading">Baholarni boshqarish va o'zgartirish</h2>
+              <p class="panel-subheading" style="margin-bottom: 0;">
+                Foydalanuvchilar tomonidan qo'yilgan baholarni tahrirlang yoki o'chiring
+              </p>
+            </div>
+            <input
+              id="admin-rating-search"
+              type="search"
+              class="field-input"
+              style="max-width: 260px;"
+              placeholder="Maktab yoki login bo'yicha qidirish..."
+              aria-label="Baholarni qidirish"
+            />
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Maktab</th>
+                  <th>Foydalanuvchi</th>
+                  <th class="num-col">Baho (1–5)</th>
+                  <th class="num-col">Amal</th>
+                </tr>
+              </thead>
+              <tbody id="ratings-table-body">
+                <tr>
+                  <td colspan="4">Yuklanmoqda...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <!-- Accessible Confirmation Modal -->
+    <div
+      id="confirm-modal"
+      class="modal-backdrop"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="confirm-modal-title"
+      hidden
+    >
+      <div class="modal-panel glass-panel-strong">
+        <h3 id="confirm-modal-title" class="modal-title">Tasdiqlash</h3>
+        <p id="confirm-modal-desc" class="modal-desc"></p>
+        <div class="modal-actions">
+          <button type="button" id="confirm-cancel-btn" class="btn btn-ghost btn-sm">Bekor qilish</button>
+          <button type="button" id="confirm-accept-btn" class="btn btn-danger btn-sm">O'chirish</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <span>Eko Komisiya — Administrator paneli</span>
+      <span>SQLite + JWT + DDoS Guard</span>
+    </footer>
+
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/admin.js"></script>
+  </body>
+</html>

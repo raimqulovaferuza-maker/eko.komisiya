@@ -1,0 +1,277 @@
+/* Responsive Breakpoints */
+
+@media (max-width: 1120px) {
+  .schools-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-grid,
+  .school-manage-grid,
+  .school-hero-card,
+  .profile-activity-grid,
+  .events-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .login-shell {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+    padding-top: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    height: 62px;
+  }
+
+  .topbar-inner {
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  .mobile-menu-btn {
+    display: inline-flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 62px;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    background: rgba(9, 13, 26, 0.96);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    border-bottom: 1px solid var(--border-subtle);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    z-index: 39;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-link {
+    padding: 12px 14px;
+    border-radius: 10px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-link.active {
+    background: rgba(124, 92, 255, 0.14);
+  }
+
+  .nav-link.active::after {
+    display: none;
+  }
+
+  .topbar-actions {
+    gap: 8px;
+  }
+
+  .user-profile-link {
+    padding: 3px;
+    gap: 0;
+  }
+
+  .user-identity {
+    display: none;
+  }
+
+  .page-shell {
+    padding: 24px 16px 48px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .kpi-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .schools-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar-search {
+    flex: none;
+    width: 100%;
+    max-width: none;
+  }
+
+  .toolbar-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar-filters .field-select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .login-card {
+    padding: 24px 20px;
+  }
+
+  .hero-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .demo-box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .star-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .toast-container {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    max-width: none;
+  }
+
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 16px 32px;
+  }
+
+  /* Responsive stacked tables on mobile */
+  .data-table thead {
+    display: none;
+  }
+
+  .data-table,
+  .data-table tbody,
+  .data-table tr,
+  .data-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .data-table tr {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .data-table tr:last-child {
+    border-bottom: none;
+  }
+
+  .data-table td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 6px 0;
+    border-bottom: none;
+    text-align: right;
+  }
+
+  .data-table td::before {
+    content: attr(data-label);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-align: left;
+    flex-shrink: 0;
+  }
+
+  .data-table td:first-child {
+    text-align: left;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding-bottom: 10px;
+  }
+
+  .data-table td:first-child::before {
+    display: none;
+  }
+
+  .num-col {
+    text-align: right;
+  }
+
+  .admin-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-panel-card {
+    padding: 18px;
+  }
+
+  .profile-hero-card {
+    padding: 20px;
+  }
+
+  .profile-identity-wrap {
+    flex: 1 1 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .profile-summary-metrics {
+    width: 100%;
+    padding-left: 0;
+    padding-top: 16px;
+    border-left: none;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .profile-activity-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .segmented-bar {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .segmented-btn {
+    flex: 1;
+    padding: 6px 8px;
+  }
+
+  .action-row {
+    width: 100%;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .kpi-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-tabs {
+    grid-template-columns: 1fr;
+  }
+}

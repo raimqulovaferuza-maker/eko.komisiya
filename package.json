@@ -1,0 +1,41 @@
+{
+  "name": "react-example",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node backend/server.js",
+    "start": "node backend/server.js",
+    "build": "node --check backend/server.js && node --check backend/db.js && node --check backend/utils/scoring.js && node --check backend/utils/ddosGuard.js && node --check backend/utils/uploads.js && node --check backend/routes/auth.js && node --check backend/routes/schools.js && node --check backend/routes/users.js && node --check backend/routes/behavior.js && node --check backend/routes/profile.js",
+    "lint": "node --check backend/server.js && node --check backend/db.js && node --check backend/utils/scoring.js && node --check backend/utils/ddosGuard.js && node --check backend/utils/uploads.js && node --check backend/routes/auth.js && node --check backend/routes/schools.js && node --check backend/routes/users.js && node --check backend/routes/behavior.js && node --check backend/routes/profile.js && node --check frontend/js/api.js && node --check frontend/js/auth.js && node --check frontend/js/schools.js && node --check frontend/js/school.js && node --check frontend/js/admin.js && node --check frontend/js/behavior.js && node --check frontend/js/profile.js",
+    "test": "node --test backend/utils/scoring.test.js backend/utils/ddosGuard.test.js backend/utils/uploads.test.js",
+    "clean": "rm -rf dist backend/data/*.db* backend/uploads/*"
+  },
+  "dependencies": {
+    "@google/genai": "^2.4.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^6.1.1",
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^13.2.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.3",
+    "lucide-react": "^0.546.0",
+    "motion": "^12.23.24",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
+    "vite": "^8.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "autoprefixer": "^10.4.21",
+    "esbuild": "^0.25.0",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.21.0",
+    "typescript": "^7.0.2",
+    "@types/express": "^4.17.21"
+  }
+}

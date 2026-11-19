@@ -1,0 +1,6 @@
+{
+  "name": "Eko Komisiya",
+  "description": "Maktablarni ekologik baholash va yulduzcha reyting tizimi (Node.js, Express, SQLite, JWT)",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maktablar reytingi — Eko Komisiya</title>
+    <meta
+      name="description"
+      content="Maktablarni ekologik mezonlar asosida yulduzcha bilan baholash sahifasi."
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/glass.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+  </head>
+  <body>
+    <div class="bg-blobs" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <header class="topbar glass-header">
+      <div class="topbar-inner">
+        <a href="/schools.html" class="brand-link">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+            </svg>
+          </span>
+          <span>Eko Komisiya</span>
+        </a>
+
+        <nav id="main-nav" class="nav-links" aria-label="Asosiy navigatsiya">
+          <a href="/schools.html" class="nav-link active">Maktablar</a>
+          <a href="/behavior.html" class="nav-link">Xulq-atvor</a>
+          <a href="/school.html" id="my-school-nav-link" class="nav-link" hidden>Mening maktabim</a>
+          <a href="/admin.html" id="admin-nav-link" class="nav-link" hidden>Admin panel</a>
+          <a href="/profile.html" class="nav-link">Profil</a>
+        </nav>
+
+        <div class="topbar-actions">
+          <a href="/profile.html" id="header-profile-link" class="user-profile-link" aria-label="Profil sahifasiga o'tish">
+            <span id="header-user-avatar" class="header-avatar"></span>
+            <span id="header-user-name" class="user-identity"></span>
+          </a>
+          <button type="button" id="logout-btn" class="btn btn-ghost btn-sm">Chiqish</button>
+          <button
+            type="button"
+            id="mobile-menu-btn"
+            class="mobile-menu-btn"
+            aria-label="Menyuni ochish"
+            aria-expanded="false"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="4" y1="7" x2="20" y2="7" />
+              <line x1="4" y1="12" x2="20" y2="12" />
+              <line x1="4" y1="17" x2="20" y2="17" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="page-header">
+        <div>
+          <h1 class="page-title">Maktablarni ekologik baholash</h1>
+          <p class="page-subtitle">
+            Maktablarning ekologik ko'rsatkichlarini ko'zdan kechiring va 1 dan 5 yulduzgacha baho bering.
+            Har bir komissiya a'zosi bir maktabga faqat bir marta ovoz bera oladi.
+          </p>
+        </div>
+      </section>
+
+      <section class="kpi-strip" aria-label="Umumiy ko'rsatkichlar">
+        <article class="kpi-card glass-panel">
+          <div class="kpi-label">Jami maktablar</div>
+          <div id="kpi-total-schools" class="kpi-value tabular-nums">—</div>
+        </article>
+        <article class="kpi-card glass-panel">
+          <div class="kpi-label">O'rtacha reyting</div>
+          <div id="kpi-avg-rating" class="kpi-value tabular-nums">—</div>
+        </article>
+        <article class="kpi-card glass-panel">
+          <div class="kpi-label">Umumiy ovozlar</div>
+          <div id="kpi-total-votes" class="kpi-value tabular-nums">—</div>
+        </article>
+        <article class="kpi-card glass-panel">
+          <div class="kpi-label">Siz baholagan</div>
+          <div id="kpi-user-rated" class="kpi-value tabular-nums">—</div>
+        </article>
+      </section>
+
+      <section class="toolbar" aria-label="Qidiruv va saralash">
+        <div class="toolbar-search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <input
+            id="search-input"
+            type="search"
+            class="field-input"
+            placeholder="Maktab nomi, tuman yoki yo'nalish bo'yicha qidirish..."
+            aria-label="Maktab nomi, tuman yoki yo'nalish bo'yicha qidirish"
+          />
+        </div>
+
+        <div class="toolbar-filters">
+          <select id="district-filter" class="field-select" aria-label="Tuman bo'yicha saralash">
+            <option value="all">Barcha tumanlar</option>
+          </select>
+
+          <select id="status-filter" class="field-select" aria-label="Baholash holati bo'yicha saralash">
+            <option value="all">Barcha maktablar</option>
+            <option value="unrated">Hali baholanmagan</option>
+            <option value="rated">Men baholagan</option>
+          </select>
+        </div>
+      </section>
+
+      <section id="schools-grid" class="schools-grid" aria-live="polite">
+        <div class="skeleton-card" aria-hidden="true"></div>
+        <div class="skeleton-card" aria-hidden="true"></div>
+        <div class="skeleton-card" aria-hidden="true"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Eko Komisiya — Maktablar ekologik monitoring tizimi</span>
+      <span>1 foydalanuvchi = har maktabga 1 ta baho</span>
+    </footer>
+
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/schools.js"></script>
+  </body>
+</html>

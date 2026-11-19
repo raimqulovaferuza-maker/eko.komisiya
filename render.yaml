@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: eko-komissiya
+    runtime: node
+    plan: starter
+    buildCommand: npm ci --omit=dev
+    startCommand: node backend/server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DB_PATH
+        value: /var/data/eko_komissiya.db
+      - key: UPLOADS_DIR
+        value: /var/data/uploads
+    disk:
+      name: eko-komissiya-data
+      mountPath: /var/data
+      sizeGB: 2
